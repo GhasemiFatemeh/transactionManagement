@@ -14,12 +14,13 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>5.3.22</version>
+            <artifactId>spring-aspects</artifactId>
+            <version>3.2.0.RELEASE</version>
         </dependency>
+
 
     </dependencies>
 
