@@ -10,7 +10,8 @@ public class JDBC {
     }
     private static final BasicDataSource BASIC_DATA_SOURCE = new BasicDataSource();
     static {
-        BASIC_DATA_SOURCE.setUrl("jdbc:oracle:@thin:localhost:1521:xe");
+        BASIC_DATA_SOURCE.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        BASIC_DATA_SOURCE.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
         BASIC_DATA_SOURCE.setUsername("fatemeh");
         BASIC_DATA_SOURCE.setPassword("myjava123");
     }
