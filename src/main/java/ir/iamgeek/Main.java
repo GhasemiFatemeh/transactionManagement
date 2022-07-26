@@ -14,7 +14,7 @@ public class Main {
         person.setId(1L).setName("fatemeh").setFamily("ghasemi").setAge(21);
         try{
             Connection connection = JDBC.getConnection();
-            personDA.insert(connection,person);
+            personDA.insert(person);
         }catch (Exception e){
             e.printStackTrace();
         }

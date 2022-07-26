@@ -17,7 +17,9 @@ public class JDBC {
     }
 
     public static Connection getConnection() throws SQLException {
-       return BASIC_DATA_SOURCE.getConnection();
+        Connection connection = BASIC_DATA_SOURCE.getConnection();
+        connection.setAutoCommit(false);
+        return connection;
     }
 
 }

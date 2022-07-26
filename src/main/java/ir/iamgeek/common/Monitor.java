@@ -13,13 +13,18 @@ import java.sql.Connection;
 @Aspect
 @Component
 public class Monitor {
+
+    public static final ThreadLocal THREAD_LOCAL =new ThreadLocal();
+
     @Around("execution(* ir.iamgeek.repository.PersonDA.* (..))")
     public Object monitor(ProceedingJoinPoint point) throws Throwable {
-        Method declaredMethod = point.getTarget().getClass().getDeclaredMethod(point.getSignature().getName(), Connection.class, Person.class);
+        Method declaredMethod = point.getTarget().getClass().getDeclaredMethod(point.getSignature().getName(),  Person.class);
+        Object[] args = point.getArgs();
         Transactional annotation = declaredMethod.getDeclaredAnnotation(Transactional.class);
+        Connection connection = (Connection) THREAD_LOCAL.get();
         if (annotation != null) {
-            Connection connection = JDBC.getConnection();
-            Object proceed = point.proceed(new Object[]{connection});
+            connection = JDBC.getConnection();
+            Object proceed = point.proceed(new Object[]{args[0]});
             connection.commit();
             connection.close();
             return proceed;
