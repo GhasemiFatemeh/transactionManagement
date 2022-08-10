@@ -12,9 +12,7 @@ import java.sql.SQLException;
 
 @Repository
 public class PersonDA {
-
-    @Persistence
-    private EntityManager entityManager;
+    private final EntityManager entityManager=new EntityManager();
 
     @Transactional
     public void insert(Person person) throws SQLException {
